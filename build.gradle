@@ -43,8 +43,6 @@ android {
 	defaultConfig {
 		minSdkVersion setup.minSdk
 		targetSdkVersion setup.targetSdk
-		versionCode commitCount.toInteger()
-		versionName appVersionName
 
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}

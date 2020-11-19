@@ -18,6 +18,12 @@ jobs:
           java-version: 1.8
       - name: install NDK
         run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root=${ANDROID_SDK_ROOT}
+      - name: cache gradle packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
       - name: build and publish
         run: ./gradlew clean build publishAndroidLibraryActionsTestPublicationToGithubPackagesRepository
         env:
