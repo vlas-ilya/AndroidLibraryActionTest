@@ -19,7 +19,7 @@ jobs:
       - name: install NDK
         run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root=${ANDROID_SDK_ROOT}
       - name: build and publish
-        run: ./gradlew publish
+        run: ./gradlew clean build publish
         env:
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}
