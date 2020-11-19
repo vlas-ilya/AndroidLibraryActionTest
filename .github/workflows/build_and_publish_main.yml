@@ -17,10 +17,7 @@ jobs:
           java-version: 1.8
       - name: Install NDK
         run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root=${ANDROID_SDK_ROOT}
-      - name: Publish
-        run: bash ./gradlew build
-      - name: Publish
-        run: bash ./gradlew publish
-        env:
+      - name: Build and publish
+        run: ./gradlew build && ./gradlew publish
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}
