@@ -24,7 +24,7 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
-      - name: build and publish
+      - name: clean, build and publish
         run: ./gradlew cleanBuildPublish
         env:
           GITHUB_USER: vlas-ilya
