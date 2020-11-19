@@ -2,8 +2,8 @@ apply plugin: 'maven-publish'
 
 def LIB_GROUP_ID = 'com.tease.androidactionstest'
 def LIB_ARTIFACT_ID = 'androidlibraryactionstest'
-
-def LIB_VERSION = version.toString()
+def commitCount = ['sh', '-c', 'git rev-list --count HEAD'].execute().text.trim();
+def LIB_VERSION = '1.1.1' + '.' + commitCount;
 
 task sourceJar(type: Jar) {
 	from android.sourceSets.main.java.srcDirs
@@ -30,7 +30,7 @@ publishing {
 			groupId LIB_GROUP_ID
 			artifactId LIB_ARTIFACT_ID
 			version LIB_VERSION
-			artifact("$buildDir/outputs/aar/AndroidLibraryActionsTest-" + version.toString() + ".aar")
+			artifact("$buildDir/outputs/aar/AndroidLibraryActionsTest.aar")
 			artifact(sourceJar)
 
 			pom.withXml {
