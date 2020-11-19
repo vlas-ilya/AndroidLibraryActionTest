@@ -23,7 +23,7 @@ jobs:
             ${{ runner.os }}-gradle
       - name: build and publish
         run: |
-          ./gradlew clean build publish
+          ./gradlew clean assemble publish
         env:
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}
