@@ -1,4 +1,4 @@
-package com.tease.androidlibraryactiontest;
+package com.tease.androidlibraryactionstest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package com.tease.androidlibraryactiontest;
+package com.tease.androidlibraryactionstest;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.tease.androidlibraryactiontest.test", appContext.getPackageName());
+        assertEquals("com.tease.androidlibraryactionstest.test", appContext.getPackageName());
     }
 }

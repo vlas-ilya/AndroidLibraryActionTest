@@ -1,4 +1,4 @@
-package com.tease.androidlibraryactiontest;
+package com.tease.androidlibraryactionstest;
 
 import org.junit.Test;
 
