@@ -17,7 +17,7 @@ jobs:
         with:
           java-version: 1.8
       - name: install NDK
-        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root=${ANDROID_SDK_ROOT}
+        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.2.6472646" --sdk_root=${ANDROID_SDK_ROOT}
       - name: cache gradle packages
         uses: actions/cache@v2
         with:
@@ -25,14 +25,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: build and publish
-        run: ./gradlew clean build
-      - name: Archive aar
-        uses: actions/upload-artifact@v2
-        with:
-          name: code-coverage-report
-          path: build/outputs/aar/AndroidLibraryActionsTest.aar
-      - name: build and publish
-        run: ./gradlew publishAndroidLibraryActionsTestPublicationToGithubPackagesRepository
+        run: ./gradlew clean build publish
         env:
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}
