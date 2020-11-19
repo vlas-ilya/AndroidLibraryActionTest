@@ -25,7 +25,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: build and publish
-        run: ./gradlew clean build publish
+        run: ./gradlew cleanBuildPublish
         env:
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}
