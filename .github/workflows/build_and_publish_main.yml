@@ -19,7 +19,7 @@ jobs:
       - name: install NDK
         run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root=${ANDROID_SDK_ROOT}
       - name: build
-        run: ./gradlew clean build && cp ./build/outputs/aar/AndroidLibraryActionsTest.aar ./AndroidLibraryActionsTest.aar
+        run: ./gradlew clean build && cp /home/runner/work/AndroidLibraryActionTest/AndroidLibraryActionTest/build/outputs/aar/AndroidLibraryActionsTest.aar ./AndroidLibraryActionsTest.aar
       - name: publish
         run: ./gradlew publish
         env:
