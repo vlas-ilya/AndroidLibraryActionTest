@@ -38,12 +38,6 @@ ext {
 // git commit count into branch
 def commitCount = ['sh', '-c', 'git rev-list --count HEAD'].execute().text.trim();
 
-// git branch name
-def branchName = ['sh', '-c', 'git branch | grep \\* | cut -d \' \' -f2'].execute().text.trim();
-
-// git short hash commit name
-def shortHashCommit = ['sh', '-c', 'git rev-parse --short HEAD'].execute().text.trim();
-
 android {
 	compileSdkVersion setup.compileSdk
 	defaultConfig {
