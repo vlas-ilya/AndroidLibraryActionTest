@@ -47,3 +47,11 @@ publishing {
 		}
 	}
 }
+
+task cleanBuildPublish {
+	dependsOn 'clean'
+	dependsOn 'build'
+	dependsOn 'publish'
+	tasks.findByName('build').mustRunAfter 'clean'
+	tasks.findByName('publish').mustRunAfter 'build'
+}
