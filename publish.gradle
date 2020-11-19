@@ -51,7 +51,7 @@ publishing {
 task cleanBuildPublish {
 	dependsOn 'clean'
 	dependsOn 'build'
-	dependsOn 'publishAndroidActionsTestPublicationToGithubPackagesRepository'
+	dependsOn 'publish'
 	tasks.findByName('build').mustRunAfter 'clean'
-	tasks.findByName('publishAndroidActionsTestPublicationToGithubPackagesRepository').mustRunAfter 'build'
+	tasks.findByName('publish').mustRunAfter 'build'
 }

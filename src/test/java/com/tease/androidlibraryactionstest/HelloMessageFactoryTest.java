@@ -15,6 +15,6 @@ class HelloMessageFactoryTest {
     @Test
     void message() {
         String message = factory.message();
-        assertEquals(message, "Hello world!");
+        assertEquals(message, "Hello world!1");
     }
 }
