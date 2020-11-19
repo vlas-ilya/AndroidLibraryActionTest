@@ -25,7 +25,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: build and publish
-        run: ./gradlew clean build publishAndroidLibraryActionsTestPublicationToGithubPackagesRepository
+        run: ./gradlew clean build
+      - name: Archive aar
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: build/outputs/aar/AndroidLibraryActionsTest.aar
+      - name: build and publish
+        run: ./gradlew publishAndroidLibraryActionsTestPublicationToGithubPackagesRepository
         env:
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}

@@ -31,7 +31,7 @@ publishing {
 			artifactId LIB_ARTIFACT_ID
 			version LIB_VERSION
 			artifact(sourceJar)
-
+			artifact("file://${buildDir}/outputs/aar/AndroidLibraryActionsTest.aar")
 		}
 	}
 }
