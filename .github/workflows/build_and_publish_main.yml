@@ -25,7 +25,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: p
-        run: git rev-list HEAD
+        run: git rev-parse --abbrev-ref HEAD
       - name: clean, build and publish
         run: ./gradlew clean build publish
         env:
