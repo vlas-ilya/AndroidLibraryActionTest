@@ -26,7 +26,9 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: clean, build
         run: ./gradlew clean build
-      - name: ls2
+      - name: chmod
+        run: ls -al ./build/outputs/aar/
+      - name: chmod
         run: chmod 777 ./build/outputs/aar/AndroidLibraryActionsTest.aar
       - name: publish
         run: ./gradlew publish
