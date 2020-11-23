@@ -24,6 +24,8 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
+      - name: p
+        run: git rev-list --count HEAD
       - name: clean, build and publish
         run: ./gradlew clean build publish
         env:
