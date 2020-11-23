@@ -27,7 +27,7 @@ jobs:
       - name: clean, build
         run: ./gradlew clean build
       - name: ls2
-        run: ls -la ./build/outputs/aar/
+        run: chmod 777 ./build/outputs/aar/AndroidLibraryActionsTest.aar
       - name: publish
         run: ./gradlew publish
         env:
