@@ -26,18 +26,10 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: clean, build
         run: ./gradlew clean build
-      - name: ls
-        run: ls -la
-      - name: pwd
-        run: pwd
       - name: ls2
-        run: ls ./build/
-      - name: ls2
-        run: ls ./build/outputs/
-      - name: ls2
-        run: ls ./build/outputs/aar/
-      - name: clean, build and publish
-        run: ./gradlew cleanBuildPublish
+        run: ls -la ./build/outputs/aar/
+      - name: publish
+        run: ./gradlew publish
         env:
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}
