@@ -27,7 +27,19 @@ jobs:
       - name: p
         run: git rev-parse --abbrev-ref HEAD
       - name: clean, build and publish
-        run: ./gradlew clean build publish
+        run: ./gradlew clean test createDebugCoverageReport build publish
         env:
           GITHUB_USER: vlas-ilya
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.token }}
+      - name: 'publish test report'
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2-preview
+        with:
+          name: 'test-report'
+          path: build/reports/tests/testDebugUnitTest/*
+      - name: 'publish test coverage report'
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2-preview
+        with:
+          name: 'test-coverage-report'
+          path: build/reports/coverage/debug/*
