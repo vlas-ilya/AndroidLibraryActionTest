@@ -18,14 +18,22 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Cache (NDK)
+      - name: Prepare NDK dir for caching ( workaround for https://github.com/actions/virtual-environments/issues/1337 )
+        run: |
+          sudo mkdir -p ${ANDROID_HOME}/ndk
+          sudo chmod -R 777 ${ANDROID_HOME}/ndk
+          sudo chown -R $USER:$USER ${ANDROID_HOME}/ndk
+
+      - name: NDK Cache
+        id: ndk-cache
         uses: actions/cache@v2
         with:
-          path: ${ANDROID_HOME}/ndk/21.2.6472646
-          key: ndk-cache
+          path: ${ANDROID_HOME}/ndk
+          key: ndk-cache-21.2.6472646-v2
 
-      - name: 'install NDK'
-        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.2.6472646" --sdk_root=${ANDROID_SDK_ROOT}
+      - name: Install NDK
+        if: steps.ndk-cache.outputs.cache-hit != 'true'
+        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.2.6472646"
 
       - name: 'cache gradle packages'
         uses: actions/cache@v2
